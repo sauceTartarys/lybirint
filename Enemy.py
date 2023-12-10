@@ -19,12 +19,9 @@ class Enemy:
         window.blit(self.texture,( self.hit_box.x,  self.hit_box.y))
 
     def muve(self):
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_l]:
-            self.hit_box.x += self.speed
-        if keys[pygame.K_j]:
-            self.hit_box.x -= self.speed
-        if keys[pygame.K_i]:
-            self.hit_box.y -= self.speed
-        if keys[pygame.K_k]:
-            self.hit_box.y += self.speed
+        self.hit_box.x += self.speed
+        self.hit_box.y += self.speed
+        if self.hit_box.x > self.x2 and self.hit_box.y > self.y2:
+            self.speed *= -1
+        if self.hit_box.x < self.x1 and self.hit_box.y < self.y1:
+            self.speed *= -1

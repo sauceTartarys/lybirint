@@ -2,8 +2,7 @@ import pygame
 
 
 class gold:
-    def __init__(self, x, y,w,h, speed, texture):
-        self.speed = speed
+    def __init__(self, x, y,w,h,  texture):
         self.texture = pygame.image.load(texture)
         self.hit_box = self.texture.get_rect()
         self.hit_box.x = x
