@@ -1,3 +1,5 @@
+import random
+import time
 import pygame
 import gold
 import oliver
@@ -24,7 +26,14 @@ game = True
 walls = []
 walls.append(Wall(220, 40, 100, 20,(255, 255, 0)))
 walls.append(Wall(320, 40, 20, 360,(255, 255, 0)))
-walls.append(Wall(422,  383, 20, 200,(250, 250, 0)))
+walls.append(Wall(330, 484, 100, 20,(250, 250, 0)))
+walls.append(Wall(418, 101, 20, 500,(250, 250, 0)))
+walls.append(Wall(419, 38, 100, 20,(250, 250, 0)))
+walls.append(Wall(222, 0, 20, 50,(250, 250, 0)))
+
+
+money_sound = pygame.mixer.Sound("money.ogg")
+
 while game:
 
     for event in pygame.event.get():
@@ -38,6 +47,12 @@ while game:
     wacawaca.muve()
     cyb.muve()
 
+    for wall in walls:
+        if wacawaca.hit_box.colliderect((wall.rect)):
+            game = False
+
+    if golden.hit_box.colliderect(wacawaca.hit_box):
+        money_sound.play()
 
     window.fill((123,123,123))
     window.blit(fone,(0,0))
@@ -45,6 +60,7 @@ while game:
     golden.render(window)
     cyb.render(window)
     for wall in walls:
+        wall.color = [random.randint(0,255), random.randint(0,255), random.randint(0,255)]
         wall.render(window)
     pygame.display.flip()
     fps.tick()
