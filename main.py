@@ -9,17 +9,17 @@ pygame.init()
 
 window = pygame.display.set_mode((800,500))
 pygame.mixer.init()
-pygame.mixer.music.load("jungles.ogg")
+pygame.mixer.music.load("Ogg_Vorbis_-_3_-_SaxoPhonK.mp3")
 pygame.mixer.music.play(-1)
 
 fps = pygame.time.Clock()
 
-fone = pygame.image.load("background3.png")
+fone = pygame.image.load("завантаження.jpg")
 
 fone = pygame.transform.scale(fone,(800,500))
 
 wacawaca = oliver.oliver(50,50, 50,50, 1, "hero.png")
-cyb = Enemy(200,200, 50,50, 1, "cyborg.png", 100,200,300,300)
+cyb = Enemy(522,218, 50,50, 1, "cyborg.png", 200,100,200,300)
 golden = gold.gold(600, 200, 100, 100, "treasure.png")
 game = True
 
@@ -28,8 +28,12 @@ walls.append(Wall(220, 40, 100, 20,(255, 255, 0)))
 walls.append(Wall(320, 40, 20, 360,(255, 255, 0)))
 walls.append(Wall(330, 484, 100, 20,(250, 250, 0)))
 walls.append(Wall(418, 101, 20, 500,(250, 250, 0)))
-walls.append(Wall(419, 38, 100, 20,(250, 250, 0)))
+walls.append(Wall(2, 0, 20, 500,(250, 250, 0)))
+walls.append(Wall(2, 0, 840, 30,(250, 250, 0)))
 walls.append(Wall(222, 0, 20, 50,(250, 250, 0)))
+walls.append(Wall(423, 0, 20, 40,(250, 250, 0)))
+walls.append(Wall(4, 484, 840, 40,(250, 250, 0)))
+walls.append(Wall(786, 5, 20, 500,(250, 250, 0)))
 
 
 money_sound = pygame.mixer.Sound("money.ogg")
@@ -49,6 +53,9 @@ while game:
 
     for wall in walls:
         if wacawaca.hit_box.colliderect((wall.rect)):
+            game = False
+
+        if wacawaca.hit_box.colliderect((cyb.rect)):
             game = False
 
     if golden.hit_box.colliderect(wacawaca.hit_box):

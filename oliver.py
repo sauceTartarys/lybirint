@@ -10,7 +10,7 @@ class oliver:
         self.hit_box.x = x
         self.hit_box.y = y
         self.texture = pygame.transform.scale(self.texture,(w,h))
-        self.sound_step = pygame.mixer.Sound("kick.ogg")
+        self.sound_step = pygame.mixer.Sound("otryad-soldat-dvigaetsya-31406.ogg")
         self.sound_step.play(-1)
         self.sound_step.set_volume(0)
 
